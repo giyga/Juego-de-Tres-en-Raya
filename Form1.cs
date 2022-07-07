@@ -9,7 +9,7 @@ namespace La_Vieja
         private byte VictoriasX, VictoriasO, Empates; //Para los contadores de victorias
         public enum ModoDeJuego { JvJ, JvIA }; //Determina el modo de juego seleccionado
         private ModoDeJuego ModoSeleccionado; //Una instancia de ese enum
-        public bool JugadorEligeX; //CondiciÛn que determina si el jugador elige jugar con X o con O contra la IA. True para las X, False para las Y.
+        public bool JugadorEligeX; //Condici√≥n que determina si el jugador elige jugar con X o con O contra la IA. True para las X, False para las Y.
         public Form1()
         {
             InitializeComponent();
@@ -200,7 +200,7 @@ namespace La_Vieja
                             break;
                         }
                     }
-                    col++;
+                    else break;
                 }
             }
 
@@ -772,7 +772,7 @@ namespace La_Vieja
         }
         #endregion
 
-        private void button1_Click_1(object sender, EventArgs e) //BotÛn de reiniciar contador
+        private void button1_Click_1(object sender, EventArgs e) //Bot√≥n de reiniciar contador
         {
             VictoriasX = VictoriasO = Empates = 0;
             labelVictoriasO.Text = $"O:   {VictoriasO}";
@@ -781,7 +781,7 @@ namespace La_Vieja
         }
 
 
-        #region SelecciÛn de Modo de Juego
+        #region Selecci√≥n de Modo de Juego
         private void jugadorVsJugadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VictoriasX = VictoriasO = Empates = 0;
@@ -842,10 +842,10 @@ namespace La_Vieja
 
 
         #region IA
-        //NOTA PERSONAL: Si bien verificar victorias y empates no es algo que le competa a la IA, los voy a poner de todas maneras, para poner en pr·ctica los delegados.
+        //NOTA PERSONAL: Si bien verificar victorias y empates no es algo que le competa a la IA, los voy a poner de todas maneras, para poner en pr√°ctica los delegados.
         private void OcuparCentro(Del_VictoriasYEmpates Victorias, Del_VictoriasYEmpates Empates)
         {
-            //Ver si el centro est· ocupado
+            //Ver si el centro est√° ocupado
             if (EstadosCasillas[1, 1] == 0)
             {
                 if (JugadorEligeX && !turnoX)
@@ -868,7 +868,7 @@ namespace La_Vieja
             }
         }
 
-        private void AtaqueBasico(Del_VictoriasYEmpates Victorias) //Bloquea o termina de llenar lÌneas
+        private void AtaqueBasico(Del_VictoriasYEmpates Victorias) //Bloquea o termina de llenar l√≠neas
         {
 
             if (JugadorEligeX && !turnoX)
@@ -901,7 +901,7 @@ namespace La_Vieja
                     else if (EstadosCasillas[fil, 1] == 2 && EstadosCasillas[fil, 2] == 2 && EstadosCasillas[fil, 0] == 0) 
                     {
                         EstadosCasillas[fil, 0] = 2;
-                        switch (fil) //NOTA: Necesito llamar a la funciÛn RevisarLineas en cada uno de estos casos para evitar reciclar cÛdigo
+                        switch (fil) //NOTA: Necesito llamar a la funci√≥n RevisarLineas en cada uno de estos casos para evitar reciclar c√≥digo
                         {
                             case 0:
                                 Casilla1.Text = "O";
@@ -1337,7 +1337,7 @@ namespace La_Vieja
                     else if (EstadosCasillas[fil, 1] == 1 && EstadosCasillas[fil, 2] == 1 && EstadosCasillas[fil, 0] == 0 && !turnoX)
                     {
                         EstadosCasillas[fil, 0] = 2;
-                        switch (fil) //NOTA: Necesito llamar a la funciÛn RevisarLineas en cada uno de estos casos para evitar reciclar cÛdigo
+                        switch (fil) //NOTA: Necesito llamar a la funci√≥n RevisarLineas en cada uno de estos casos para evitar reciclar c√≥digo
                         {
                             case 0:
                                 Casilla1.Text = "O";
@@ -1530,7 +1530,7 @@ namespace La_Vieja
                     else if (EstadosCasillas[fil, 1] == 2 && EstadosCasillas[fil, 2] == 2 && EstadosCasillas[fil, 0] == 0 && turnoX)
                     {
                         EstadosCasillas[fil, 0] = 1;
-                        switch (fil) //NOTA: Necesito llamar a la funciÛn RevisarLineas en cada uno de estos casos para evitar reciclar cÛdigo
+                        switch (fil) //NOTA: Necesito llamar a la funci√≥n RevisarLineas en cada uno de estos casos para evitar reciclar c√≥digo
                         {
                             case 0:
                                 Casilla1.Text = "X";
@@ -1698,7 +1698,7 @@ namespace La_Vieja
         private void TomarEsquina(Del_VictoriasYEmpates Victorias, Del_VictoriasYEmpates Empates) //Falta desactivar o activar turnoX
         {
 
-            if (EstadosCasillas[0, 0] == 0 || EstadosCasillas[0, 2] == 0 || EstadosCasillas[2, 0] == 0 || EstadosCasillas[2, 2] == 0) //Ver si hay esquinas disponibles para asÌ aplicar esta funciÛn
+            if (EstadosCasillas[0, 0] == 0 || EstadosCasillas[0, 2] == 0 || EstadosCasillas[2, 0] == 0 || EstadosCasillas[2, 2] == 0) //Ver si hay esquinas disponibles para as√≠ aplicar esta funci√≥n
             {
                 if (JugadorEligeX && !turnoX)
                 {
